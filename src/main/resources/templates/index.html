@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Image Generator</title>
+
+    <link rel="stylesheet"
+          th:href="@{/static.css/style.css}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <h1>✨ AI Image Generator</h1>
+
+        <p>
+            Turn your imagination into stunning AI-generated images.
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+        <form action="/generate"
+              method="post">
+
+            <div class="form-group">
+
+                <label for="prompt">
+                    Describe your image
+                </label>
+
+                <input
+                        type="text"
+                        id="prompt"
+                        name="prompt"
+                        placeholder="Example: A white tiger wearing sunglasses"
+                        th:value="${prompt}"
+                        required>
+
+            </div>
+
+
+            <div class="options">
+
+                <div class="form-group">
+
+                    <label for="size">
+                        Image Size
+                    </label>
+
+                    <select id="size"
+                            name="size">
+
+                        <option value="512x512">
+                            512 × 512
+                        </option>
+
+                        <option value="1024x1024">
+                            1024 × 1024
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="style">
+                        Image Style
+                    </label>
+
+                    <select id="style"
+                            name="style">
+
+                        <option value="Realistic">
+                            Realistic
+                        </option>
+
+                        <option value="Anime">
+                            Anime
+                        </option>
+
+                        <option value="Fantasy">
+                            Fantasy
+                        </option>
+
+                        <option value="Digital Art">
+                            Digital Art
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <button type="submit">
+                ✨ Generate Image
+            </button>
+
+        </form>
+
+
+        <div class="result"
+             th:if="${imageUrl != null}">
+
+            <h2>Generated Image</h2>
+
+            <img th:src="${imageUrl}"
+                 alt="AI Generated Image">
+
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+
+        <p>
+            AI Image Generator • Spring Boot • Thymeleaf
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
